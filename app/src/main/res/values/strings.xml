@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">UTS Mobcom Tutor</string>
+    <string name="sks">3</string>
+    <string name="Matkul1">Dasar-Dasar Pemrograman</string>
+    <string name="Matkul2">Mobile Computing</string>
+    <string name="Matkul3">Reakayasa Perangkat Lunak</string>
+    <string name="Matkul4">Kalkulus Integral</string>
+    <string name="Matkul5">Kalkulus Differensial</string>
+    <string name="Matkul6">Pengantar Teori Graph</string>
+    <string name="Matkul7">Interaksi Manusia</string>
+    <string name="Matkul8">Pemrograman dan Perancangan Web</string>
+    <string name="Matkul9">Komputer dan Masyarakat</string>
+    <string name="Matkul10">Data Mining</string>
+</resources>
