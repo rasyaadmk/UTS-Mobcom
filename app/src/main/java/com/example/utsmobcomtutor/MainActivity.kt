@@ -21,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.utsmobcomtutor.Modul.Matkul
 import com.example.utsmobcomtutor.Modul.ModelRepo
 import com.example.utsmobcomtutor.ui.theme.UTSMobcomTutorTheme
@@ -49,12 +52,18 @@ class MainActivity : ComponentActivity() {
 fun UTSMobcom() {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0x1B1B1B)
+        color = Color(0xFF1B1B1B)
     ) {
         Column {
             TopAppBar(
-                title = { Text(text = "Daftar Mata Kuliah") },
-                modifier = Modifier.fillMaxWidth()
+                title = { Text(
+                    text = "Daftar Mata Kuliah",
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold) },
+                modifier = Modifier.fillMaxWidth(),
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = Color(0xFF5e5e5e)
+                )
             )
             MataKuliah(matkul = ModelRepo.matkul)
         }
@@ -78,18 +87,34 @@ fun MataKuliah(matkul : List<Matkul>){
 @Composable
 fun Cards(matkul: Matkul, modifier: Modifier = Modifier) {
     Card(modifier = modifier, colors = CardDefaults.cardColors(
-        containerColor = Color(0xFFF3EFE8),
+        containerColor = Color(0xFF3D3D3D),
     )) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(8.dp)
-                .sizeIn(minHeight = 64.dp)
+                .sizeIn(minHeight = 64.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
+
+            Column(verticalArrangement = Arrangement.Center) {
+                Text(
+                    text = stringResource(id = matkul.matkul),
+                    modifier = Modifier.padding(8.dp),
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontSize = 17.sp
+                )
+                Text(
+                    text = stringResource(id = matkul.sks) + " SKS",
+                    modifier = Modifier.padding(8.dp),
+                    color = Color.White,
+                )
+            }
             Box(
                 modifier = Modifier
                     .sizeIn(minWidth = 64.dp)
-                    .padding(8.dp)
+                    .padding(8.dp),
             ) {
                 Image(
                     painter = painterResource(id = matkul.image),
@@ -97,25 +122,7 @@ fun Cards(matkul: Matkul, modifier: Modifier = Modifier) {
                     contentScale = ContentScale.FillWidth,
                     modifier = Modifier.size(64.dp)
                 )
-            }
-            Column {
-                Text(
-                    text = stringResource(id = matkul.matkul),
-                    modifier = Modifier.padding(8.dp),
-                    fontWeight = FontWeight.Bold
-                )
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ){
-                    Text(
-                        text = "sks : " + stringResource(id = matkul.sks),
-                        modifier = Modifier.padding(8.dp),
-                    )
-                }
-            }
-        }
+            }}
     }
 }
 
